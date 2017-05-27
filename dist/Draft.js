@@ -11269,9 +11269,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // Additionally, clone the selection range. IE11 throws an
 	    // InvalidStateError when attempting to access selection properties
 	    // after the range is detached.
-	    var range = selection.getRangeAt(0);
-	    range.setEnd(node, offset);
-	    selection.addRange(range.cloneRange());
+
+	    if (selection.rangeCount > 0) {
+	      var range = selection.getRangeAt(0);
+	      range.setEnd(node, offset);
+	      selection.addRange(range.cloneRange());
+	    }
+
+	    // var range = selection.getRangeAt(0);
+	    // range.setEnd(node, offset);
+	    // selection.addRange(range.cloneRange());
 	  }
 	}
 
